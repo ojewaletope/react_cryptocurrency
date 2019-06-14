@@ -1,9 +1,10 @@
-import React, { Component } from "react";
-import {responseHandler}    from "../../helper";
-import {API_URL}            from "../../config";
-import Table                from '../table/Table'
-import Loading              from "../common/Loading";
-import Pagination           from "../pagination/Pagination";
+import React, { Component }  from "react";
+import {responseHandler}     from "../../helper";
+import {API_URL}             from "../../config";
+import Table                 from '../table/Table'
+import Loading               from "../common/Loading";
+import Pagination            from "../pagination/Pagination";
+
 
 class List extends Component {
   state = {
@@ -34,15 +35,6 @@ class List extends Component {
   componentDidMount() {
     this.fetchCurrencies()
   }
-  handlePercentChange(percent) {
-    if (percent < 0) {
-      return <span className="percent-fallen">{percent}% &darr;</span>
-    } else if (percent > 0) {
-      return <span className="percent-raised">{percent}% &uarr;</span>
-    } else {
-      return <span>{percent}%</span>
-    };
-  }
   handlePaginationClick = (direction) => {
     let nextPage = this.state.page;
     // increment nextpage if diewction = next otherwise decrease
@@ -63,7 +55,7 @@ class List extends Component {
     }
     return (
       <div >
-        <Table currencies={currencies} handlePercentChange={this.handlePercentChange}/>
+        <Table currencies={currencies}/>
         <Pagination page={page} totalPages={totalPages} handlePaginationClick={this.handlePaginationClick}/>
       </div>
     );
